@@ -1,1 +1,0 @@
-git log --pretty=format:"#define GIT_LAST_COMMIT_DATE \"%ad\"%n#define GIT_LAST_COMMIT_HASH \"%H\"%n#define GIT_LAST_COMMIT_MESSAGE \"%s\" %n" -n 1 >> git_info.h
