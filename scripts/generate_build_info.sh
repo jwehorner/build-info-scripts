@@ -18,7 +18,7 @@ done
 echo "#define GIT_CURRENT_CHANGES		\"${status_text}\"" >> build_info.h
 echo "#define CURRENT_BUILD_TIME 		\"$(date)\"" >> build_info.h
 echo "#define CURRENT_BUILD_USER		\"$(whoami)\"" >> build_info.h
-echo "#define CURRENT_BUILD_COMPUTER	\"$(hostname)\"" >> build_info.h
+echo "#define CURRENT_BUILD_HOSTNAME	\"$(hostname)\"" >> build_info.h
 
 echo "" >> build_info.h
 echo "#endif /* BUILD_INFO_H */" >> build_info.h

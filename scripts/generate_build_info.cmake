@@ -1,5 +1,4 @@
 function(generate_build_info OUTPUT_PATH)
-	message("Build info written to: ${OUTPUT_PATH}/build_info.h")
 	execute_process(COMMAND git log --pretty=format:%ad -n 1 	OUTPUT_VARIABLE GIT_LAST_COMMIT_DATE)
 	execute_process(COMMAND git log --pretty=format:%H -n 1 	OUTPUT_VARIABLE GIT_LAST_COMMIT_HASH)
 	execute_process(COMMAND git log --pretty=format:%s -n 1 	OUTPUT_VARIABLE GIT_LAST_COMMIT_MESSAGE)
@@ -8,7 +7,7 @@ function(generate_build_info OUTPUT_PATH)
 
 	string(TIMESTAMP CURRENT_BUILD_TIME)
 	set(CURRENT_BUILD_USER "$ENV{USERNAME}")
-	set(CURRENT_BUILD_COMPUTER "$ENV{COMPUTERNAME}")
+	cmake_host_system_information(RESULT CURRENT_BUILD_HOSTNAME QUERY HOSTNAME)
 
 	file(WRITE 
 		"${OUTPUT_PATH}/build_info.h"
@@ -21,7 +20,7 @@ function(generate_build_info OUTPUT_PATH)
 #define GIT_CURRENT_CHANGES     \"${GIT_CURRENT_CHANGES}\"
 #define CURRENT_BUILD_TIME      \"${CURRENT_BUILD_TIME}\"
 #define CURRENT_BUILD_USER      \"${CURRENT_BUILD_USER}\"
-#define CURRENT_BUILD_COMPUTER  \"${CURRENT_BUILD_COMPUTER}\"
+#define CURRENT_BUILD_HOSTNAME  \"${CURRENT_BUILD_HOSTNAME}\"
 
 #endif /* BUILD_INFO_H */"
 	)

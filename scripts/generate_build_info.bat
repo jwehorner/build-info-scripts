@@ -18,7 +18,7 @@ set status_text=%status_text%%row%
 (echo #define GIT_CURRENT_CHANGES		"%status_text%") 	>> build_info.h
 (echo #define CURRENT_BUILD_TIME 		"%DATE%%TIME%") 	>> build_info.h
 (echo #define CURRENT_BUILD_USER		"%USERNAME%") 		>> build_info.h
-(echo #define CURRENT_BUILD_COMPUTER	"%COMPUTERNAME%") 	>> build_info.h
+(echo #define CURRENT_BUILD_HOSTNAME	"%COMPUTERNAME%") 	>> build_info.h
 
 (echo.) >> build_info.h
 (echo #endif /* BUILD_INFO_H */) >> build_info.h

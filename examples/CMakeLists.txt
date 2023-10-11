@@ -14,7 +14,7 @@ add_custom_command(TARGET test
     PRE_BUILD
     COMMAND ${CMAKE_COMMAND} 
         -DOUTPUT_PATH=${SCRIPTS_DIRECTORY}
-        -P ${CMAKE_SOURCE_DIR}/generate_build_info.cmake
+        -P ${SCRIPTS_DIRECTORY}/generate_build_info.cmake
 		COMMENT "Generating build info."
     WORKING_DIRECTORY ${SCRIPTS_DIRECTORY}
 )
