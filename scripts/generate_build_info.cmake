@@ -5,6 +5,7 @@ function(generate_build_info OUTPUT_PATH)
 	execute_process(COMMAND git status -s						OUTPUT_VARIABLE GIT_CURRENT_CHANGES)
 	execute_process(COMMAND git branch --show-current			OUTPUT_VARIABLE GIT_CURRENT_BRANCH)
 	string(REGEX REPLACE "\n" " " GIT_CURRENT_CHANGES "${GIT_CURRENT_CHANGES}")
+	string(REGEX REPLACE "\n" ""  GIT_CURRENT_BRANCH  "${GIT_CURRENT_BRANCH}")
 
 	string(TIMESTAMP BUILD_CURRENT_TIME)
 	set(BUILD_CURRENT_USER "$ENV{USERNAME}")
