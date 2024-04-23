@@ -15,7 +15,10 @@ do
 	status_text="${status_text}${row}"
 done
 
+branch=$(git branch --show-current)
+
 echo "#define GIT_CURRENT_CHANGES		\"${status_text}\"" >> build_info.h
+echo "#define GIT_CURRENT_BRANCH		\"${branch}\"" >> build_info.h
 echo "#define BUILD_CURRENT_TIME 		\"$(date)\"" >> build_info.h
 echo "#define BUILD_CURRENT_USER		\"$(whoami)\"" >> build_info.h
 echo "#define BUILD_CURRENT_HOSTNAME	\"$(hostname)\"" >> build_info.h

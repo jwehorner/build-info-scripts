@@ -3,6 +3,7 @@ function(generate_build_info OUTPUT_PATH)
 	execute_process(COMMAND git log --pretty=format:%H -n 1 	OUTPUT_VARIABLE GIT_LAST_COMMIT_HASH)
 	execute_process(COMMAND git log --pretty=format:%s -n 1 	OUTPUT_VARIABLE GIT_LAST_COMMIT_MESSAGE)
 	execute_process(COMMAND git status -s						OUTPUT_VARIABLE GIT_CURRENT_CHANGES)
+	execute_process(COMMAND git branch --show-current			OUTPUT_VARIABLE GIT_CURRENT_BRANCH)
 	string(REGEX REPLACE "\n" " " GIT_CURRENT_CHANGES "${GIT_CURRENT_CHANGES}")
 
 	string(TIMESTAMP BUILD_CURRENT_TIME)
@@ -18,6 +19,7 @@ function(generate_build_info OUTPUT_PATH)
 #define GIT_LAST_COMMIT_HASH    \"${GIT_LAST_COMMIT_HASH}\"
 #define GIT_LAST_COMMIT_MESSAGE \"${GIT_LAST_COMMIT_MESSAGE}\"
 #define GIT_CURRENT_CHANGES     \"${GIT_CURRENT_CHANGES}\"
+#define GIT_CURRENT_BRANCH      \"${GIT_CURRENT_BRANCH}\"
 #define BUILD_CURRENT_TIME      \"${BUILD_CURRENT_TIME}\"
 #define BUILD_CURRENT_USER      \"${BUILD_CURRENT_USER}\"
 #define BUILD_CURRENT_HOSTNAME  \"${BUILD_CURRENT_HOSTNAME}\"

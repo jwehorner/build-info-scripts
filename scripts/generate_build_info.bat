@@ -15,7 +15,10 @@ set row=
 for /F "tokens=*" %%x in ('git status -s') do set "row=!row! %%x"
 set status_text=%status_text%%row%
 
+FOR /F "tokens=*" %%g IN ('git branch --show-current') do (SET branch=%%g)
+
 (echo #define GIT_CURRENT_CHANGES		"%status_text%") 	>> build_info.h
+(echo #define GIT_CURRENT_BRANCH		"%branch%") 		>> build_info.h
 (echo #define BUILD_CURRENT_TIME 		"%DATE%%TIME%") 	>> build_info.h
 (echo #define BUILD_CURRENT_USER		"%USERNAME%") 		>> build_info.h
 (echo #define BUILD_CURRENT_HOSTNAME	"%COMPUTERNAME%") 	>> build_info.h
